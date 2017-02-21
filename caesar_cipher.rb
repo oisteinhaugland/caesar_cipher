@@ -1,19 +1,35 @@
-#not working with spaces and uppercase
-#jobber med spaces. legger meg
 
+
+
+
+
+
+
+
+
+=begin try 1
 def caesar_cipher(text,shift = 0)
-	encrypted = text.split("").map do |letter| 		
- 		
- 		if 68 <= letter.ord + shift and 90 >= letter.ord + shift 
- 			letter =  letter.ord + shift
- 		elsif 97 <= letter.ord + shift and 122 >= letter.ord + shift 
- 			letter =  letter.ord + shift
+	if shift > 51
+		return "Shift cannot be bigger than 51"
+	end
+	encrypted = text.split("").map do |letter| 	
+
+		key = letter.ord + shift
+ 		if key.between?(65,90) or key.between?(97,122)
+ 			letter =  key
+ 		elsif letter =~ /\s/
+ 			letter = " "
  		else
- 			letter =  letter.ord + shift - 26
+ 			letter =  key - 26
  		end
+			
 		#letter = letter.chr
 	end
-	encrypted.join("")#.gsub()
+	encrypted.join("")
 end
 
-p caesar_cipher(" ",0)
+p caesar_cipher("Z", 7 )
+
+#ABCDEFGHIKLMNOPQRSTUVWXYZ
+
+=end
