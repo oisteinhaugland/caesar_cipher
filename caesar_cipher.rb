@@ -1,10 +1,24 @@
+def caesar_cipher(text, shift= 0)
+	letters = text.split("")
+	encrypted = letters.map do |letter| 
+		
+		shift = shift%26 #magic
 
+		if letter =~ /\s/
+			letter = " "
+		elsif  letter.downcase == letter then 
+			(letter.ord + shift).between?(97,122)? letter = ((letter.ord + shift)).chr : letter = ((letter.ord+shift)-26).chr 
+		elsif letter.upcase == letter then
+			(letter.ord + shift).between?(65,90)? letter = ((letter.ord + shift)).chr : letter = ((letter.ord+shift)-26).chr 
+		end 
+	end
 
+	p encrypted
+end
 
+caesar_cipher("Hello there",-1)	
 
-
-
-
+	
 
 
 =begin try 1
